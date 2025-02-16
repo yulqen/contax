@@ -1,6 +1,11 @@
 from django.contrib import admin
 from .models import Contact
 
+site = admin.site
+
+site.site_header = "Contax Admin"
+site.site_title = "Contax Admin"
+
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
