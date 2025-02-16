@@ -1,0 +1,9 @@
+[project]
+name = "contax"
+version = "0.1.0"
+description = "Contact manager application. Sample application for DfT job application."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=5.1.6",
+]
