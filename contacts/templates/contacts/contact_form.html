@@ -1,0 +1,96 @@
+{% extends 'contacts/base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md mx-auto">
+        <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+            <h2 class="mb-6 text-2xl font-bold text-gray-900">
+                {% if form.instance.id %}
+                    Edit Contact
+                {% else %}
+                    New Contact
+                {% endif %}
+            </h2>
+
+            {% if form.errors %}
+            <div class="rounded-md bg-red-50 p-4 mb-6">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="text-sm font-medium text-red-800">Please correct the errors below</h3>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <form method="post" enctype="multipart/form-data" class="space-y-6">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="space-y-1">
+                    <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                        {{ field.label }}
+                    </label>
+                    <div class="mt-1">
+                        {{ field }}
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% if field.help_text %}
+                            <p class="mt-1 text-sm text-gray-500">{{ field.help_text }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="{% url 'contacts:list' %}" 
+                       class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Cancel
+                    </a>
+                    <button type="submit" 
+                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        {% if form.instance.id %}
+                            Update Contact
+                        {% else %}
+                            Create Contact
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Style Django form inputs to match Tailwind */
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="url"],
+    form input[type="tel"],
+    form textarea {
+        @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm;
+    }
+
+    form input[type="file"] {
+        @apply mt-1 block w-full text-sm text-gray-500
+        file:mr-4 file:py-2 file:px-4
+        file:rounded-md file:border-0
+        file:text-sm file:font-medium
+        file:bg-indigo-50 file:text-indigo-700
+        hover:file:bg-indigo-100;
+    }
+
+    form select {
+        @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm;
+    }
+</style>
+{% endblock %}
