@@ -1,5 +1,5 @@
-from django.db import models
 from django.core.validators import RegexValidator, URLValidator
+from django.db import models
 from django.utils import timezone
 
 
@@ -21,7 +21,7 @@ class Contact(models.Model):
     address = models.TextField(blank=True)
     notes = models.TextField(blank=True)
 
-    photo = models.ImageField(upload_to="contacts/photos/", blank=True, null=True)
+    photo = models.ImageField(upload_to="photos", blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
