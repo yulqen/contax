@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-800">Contacts</h1>
+        <h1 class="text-3xl font-bold text-gray-800 underline underline-offset-4 decoration-pink-500">Your Contacts</h1>
         <a href="{% url 'contacts:create' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
             Add Contact
         </a>
@@ -16,6 +16,8 @@
             </div>
         {% endfor %}
     {% endif %}
+   
+    <hr class="my-12">
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for contact in contacts %}
@@ -48,6 +50,9 @@
                     {% endif %}
                     {% if contact.mobile_phone %}
                         <p><span class="font-medium">Phone:</span> {{ contact.mobile_phone }}</p>
+                    {% endif %}
+                    {% if contact.website %}
+                    <p><span class="font-medium">Web site:</span> <a href="{{ contact.website }}" class="text-blue-500 underline underline-offset-1">{{ contact.website }}</a></p>
                     {% endif %}
                 </div>
 

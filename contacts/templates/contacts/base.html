@@ -5,7 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contax - Contact Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
 </head>
+<style>
+        body {
+            font-family: "Roboto", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-variation-settings:
+                'wdth' 100;
+        }
+</style>
 <body class="bg-gray-50">
     <header class="bg-white shadow-sm">
         <nav class="container mx-auto px-4">

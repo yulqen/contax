@@ -1,14 +1,10 @@
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views.generic import (
-    ListView,
-    DetailView,
-    CreateView,
-    UpdateView,
-    DeleteView,
-)
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
+
 from .models import Contact
-from django.contrib import messages
 
 
 class ContactListView(ListView):
@@ -41,7 +37,7 @@ class ContactCreateView(CreateView):
         "photo",
         "is_favorite",
     ]
-    success_url = reverse_lazy("contact-list")
+    success_url = reverse_lazy("contacts:list")
 
     def form_valid(self, form):
         messages.success(self.request, "Contact created successfully!")
@@ -65,7 +61,7 @@ class ContactUpdateView(UpdateView):
         "photo",
         "is_favorite",
     ]
-    success_url = reverse_lazy("contact-list")
+    success_url = reverse_lazy("contacts:list")
 
     def form_valid(self, form):
         messages.success(self.request, "Contact updated successfully!")
@@ -75,7 +71,7 @@ class ContactUpdateView(UpdateView):
 class ContactDeleteView(DeleteView):
     model = Contact
     template_name = "contacts/contact_confirm_delete.html"
-    success_url = reverse_lazy("contact-list")
+    success_url = reverse_lazy("contacts:list")
 
     def delete(self, request, *args, **kwargs):
         messages.success(request, "Contact deleted successfully!")
@@ -90,4 +86,4 @@ def toggle_favorite(request, pk):
         request,
         f'Contact {"added to" if contact.is_favorite else "removed from"} favorites!',
     )
-    return redirect("contact-list")
+    return redirect("contacts:list")
