@@ -66,6 +66,8 @@ You can access the application by opening your web browser and navigating to:
 http://localhost:8000
 ```
 
+Hint: click on the star icon to add a contact as favourite. It uses **htmx**!
+
 ## Deploying on Google Cloud Platform
 
 To deploy this Django application on Google Cloud Platform (GCP):
@@ -108,4 +110,4 @@ This project is licensed under the AGPL License. See the [LICENSE](LICENSE) file
 
 ---
 
-For more detailed instructions and technical documentation, consider consulting the [Django Documentation](https://docs.djangoproject.com/en/stable/). If you face issues, feel free to contribute or raise issues in the project repository. Enjoy managing your contacts with Contax!
+If you face issues, feel free to raise an issue in the project repository. Enjoy managing your contacts with Contax!
