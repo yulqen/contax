@@ -50,15 +50,7 @@ To run this application, ensure you have the following installed on your **Ubunt
    cd contax
    ```
 
-4. **Install Requirements**
-
-   Install the required packages for Django:
-
-   ```bash
-   uv sync
-   ```
-
-5. **Run Migrations and Start the Server**
+4. **Run Migrations and Start the Server**
 
    To run the development server along with the necessary migrations, execute the following command:
 
