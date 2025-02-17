@@ -13,11 +13,13 @@ class Contact(models.Model):
     )
     mobile_phone = models.CharField(validators=[phone_regex], max_length=17, blank=True)
     website = models.URLField(max_length=200, blank=True)
-    twitter_handle = models.CharField(
-        max_length=15, blank=True
-    )  # Twitter's max length is 15
+    twitter_handle = models.CharField(max_length=15, blank=True)
     linkedin_profile = models.URLField(max_length=200, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
+    birth_date = models.DateField(
+        null=True,
+        blank=True,
+        help_text="Please enter your date of birth in YYYY-MM-DD format.",
+    )
     address = models.TextField(blank=True)
     notes = models.TextField(blank=True)
 
