@@ -20,5 +20,5 @@ urlpatterns = [
         views.ContactDeleteView.as_view(),
         name="delete",
     ),
-    path("toggle_favorite/<int:pk>/", views.toggle_favorite, name="toggle-favorite"),
+    path("toggle_favourite/<int:pk>/", views.toggle_favourite, name="toggle-favourite"),
 ]

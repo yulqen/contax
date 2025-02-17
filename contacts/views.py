@@ -1,6 +1,7 @@
 from django.contrib import messages
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
+from django.views.decorators.http import require_http_methods, require_POST
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
@@ -35,7 +36,7 @@ class ContactCreateView(CreateView):
         "address",
         "notes",
         "photo",
-        "is_favorite",
+        "is_favourite",
     ]
     success_url = reverse_lazy("contacts:list")
 
@@ -59,7 +60,7 @@ class ContactUpdateView(UpdateView):
         "address",
         "notes",
         "photo",
-        "is_favorite",
+        "is_favourite",
     ]
     success_url = reverse_lazy("contacts:list")
 
@@ -78,12 +79,18 @@ class ContactDeleteView(DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-def toggle_favorite(request, pk):
+@require_http_methods(["POST", "GET"])  # Allow both POST and GET for now
+def toggle_favourite(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
-    contact.is_favorite = not contact.is_favorite
+    contact.is_favourite = not contact.is_favourite
     contact.save()
+
+    # Check if request is from HTMX
+    if request.htmx:
+        return render(request, "contacts/_favourite_status.html", {"contact": contact})
+
     messages.success(
         request,
-        f'Contact {"added to" if contact.is_favorite else "removed from"} favorites!',
+        f'Contact {"added to" if contact.is_favourite else "removed from"} favourites!',
     )
     return redirect("contacts:list")

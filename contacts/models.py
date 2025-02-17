@@ -25,7 +25,7 @@ class Contact(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_favorite = models.BooleanField(default=False)
+    is_favourite = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["last_name", "first_name"]

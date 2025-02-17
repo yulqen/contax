@@ -35,6 +35,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "django" },
+    { name = "django-htmx" },
     { name = "pillow" },
 ]
 
@@ -49,6 +50,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=5.1.6" },
+    { name = "django-htmx", specifier = ">=1.22.0" },
     { name = "pillow", specifier = ">=11.1.0" },
 ]
 
@@ -72,6 +74,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/6d/e4/901f54ee114a080371a49bd08fa688d301aaffd9751febaf4ae855fc8fcd/Django-5.1.6.tar.gz", hash = "sha256:1e39eafdd1b185e761d9fab7a9f0b9fa00af1b37b25ad980a8aa0dac13535690", size = 10700620 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/75/6f/d2c216d00975e2604b10940937b0ba6b2c2d9b3cc0cc633e414ae3f14b2e/Django-5.1.6-py3-none-any.whl", hash = "sha256:8d203400bc2952fbfb287c2bbda630297d654920c72a73cc82a9ad7926feaad5", size = 8277066 },
+]
+
+[[package]]
+name = "django-htmx"
+version = "1.22.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "asgiref" },
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e2/59/bac8c1873a676ea661babd5d8bc1a04cfcfe1176b0bf526bcd058e6ec05a/django_htmx-1.22.0.tar.gz", hash = "sha256:7306e1aba4e407496f30a57ec2e0b2974a9b96c8c6036f7ec6a8b5753ea0abdd", size = 9621 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/62/6d/c99d5d5a9edb759ebd295ec96479254b6cc7b80f40d1ee66ebb7d677fc0d/django_htmx-1.22.0-py3-none-any.whl", hash = "sha256:9f1fcf239125a42d6dadc814b3796b8d6faad8ded444a14ae021d0241fa9a40f", size = 6904 },
 ]
 
 [[package]]

@@ -37,9 +37,19 @@
                                     {{ contact.get_full_name }}
                                 </a>
                             </h2>
-                            {% if contact.is_favorite %}
-                                <span class="text-yellow-500">★</span>
-                            {% endif %}
+							<div>
+								<button hx-post="{% url 'contacts:toggle-favourite' contact.pk %}"
+                                    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+									hx-target="this"
+									hx-swap="outerHTML"
+ 									class="text-yellow-500 hover:text-yellow-600">
+									{% if contact.is_favourite %}
+									<span class="text-yellow-500">★</span>
+									{% else %}
+									<span class="text-gray-300">☆</span>
+									{% endif %}
+								</button>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -59,13 +69,6 @@
                 <div class="mt-4 flex space-x-2">
                     <a href="{% url 'contacts:update' contact.pk %}" class="text-blue-500 hover:text-blue-600">Edit</a>
                     <a href="{% url 'contacts:delete' contact.pk %}" class="text-red-500 hover:text-red-600">Delete</a>
-                    <a href="{% url 'contacts:toggle-favorite' contact.pk %}" class="text-yellow-500 hover:text-yellow-600">
-                        {% if contact.is_favorite %}
-                            Remove from favorites
-                        {% else %}
-                            Add to favorites
-                        {% endif %}
-                    </a>
                 </div>
             </div>
         {% empty %}
