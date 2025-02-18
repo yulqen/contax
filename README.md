@@ -50,7 +50,13 @@ To run this application, ensure you have the following installed on your **Ubunt
    cd contax
    ```
 
-4. **Run the tests**
+4. **Run the migrations**
+
+   ```bash
+   uv run manage.py migrate
+   ```
+
+5. **Run the tests**
 
    To run the tests for the API and the browser-based views:
 
@@ -58,13 +64,12 @@ To run this application, ensure you have the following installed on your **Ubunt
    uv run pytest -q
    ```
 
-5. **Run Migrations and Start the Server**
+6. **Run Migrations and Start the Server**
 
-   To run the development server along with the necessary migrations, execute the following command:
+   To run the development server, execute the following command:
 
    ```bash
-   uv run manage.py migrate && uv run manage.py runserver
-
+   uv run manage.py runserver
    ```
 
 ### Accessing the Application
