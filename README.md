@@ -50,12 +50,21 @@ To run this application, ensure you have the following installed on your **Ubunt
    cd contax
    ```
 
-4. **Run Migrations and Start the Server**
+4. **Run the tests**
+
+   To run the tests for the API and the browser-based views:
+
+   ```bash
+   uv run pytest -q
+   ```
+
+5. **Run Migrations and Start the Server**
 
    To run the development server along with the necessary migrations, execute the following command:
 
    ```bash
    uv run manage.py migrate && uv run manage.py runserver
+
    ```
 
 ### Accessing the Application
@@ -66,7 +75,31 @@ You can access the application by opening your web browser and navigating to:
 http://localhost:8000
 ```
 
-Hint: click on the star icon to add a contact as favourite. It uses **htmx**!
+Click the "New Contact" button on the top right of the page to add a new contact to the system.
+
+Hint: click on the star icon to add a contact as favourite after it has been added. It uses **htmx**!
+
+You can interact with API via the browser:
+
+```
+http://localhost:8000/api/contacts
+```
+
+or use CLI tools like `curl` to access the same URL.
+
+### Access the admin application
+
+To access Django's admin site, you need to create an admin user first:
+
+```bash
+uv run manage.py createsuperuser
+```
+
+Then log in at using those credentials:
+
+```
+http://localhost:8000/admin
+```
 
 ## Deploying on Google Cloud Platform
 
