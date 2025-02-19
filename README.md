@@ -13,10 +13,8 @@ Contax is a simple contact management application built with Django that helps u
 
 ### Prerequisites
 
-To run this application, ensure you have the following installed on your **Ubuntu** machine:
+To run this application, ensure you have Python 3.11 or above installed on your Ubuntu or Debian machine (or similar flavour of Linux):
 
-- **Python 3.11 or above**
-  
 ### Setup Instructions
 
 1. **Install pipx**
@@ -35,7 +33,7 @@ To run this application, ensure you have the following installed on your **Ubunt
 
 2. **Install `uv`**
 
-   Use `pipx` to install the `uv` server:
+   Use `pipx` to install `uv`:
 
    ```bash
    pipx install uv
@@ -43,7 +41,7 @@ To run this application, ensure you have the following installed on your **Ubunt
 
 3. **Clone the Repository**
 
-   Clone the Contax repository from your source control:
+   Clone the Contax repository from Github:
 
    ```bash
    git clone https://github.com/yulqen/contax
@@ -64,7 +62,7 @@ To run this application, ensure you have the following installed on your **Ubunt
    uv run pytest -q
    ```
 
-6. **Run Migrations and Start the Server**
+6. **Start the Server**
 
    To run the development server, execute the following command:
 
@@ -84,7 +82,7 @@ Click the "New Contact" button on the top right of the page to add a new contact
 
 Hint: click on the star icon to add a contact as favourite after it has been added. It uses **htmx**!
 
-You can interact with API via the browser:
+You can interact with the rudimentary API via the browser:
 
 ```
 http://localhost:8000/api/contacts
@@ -100,7 +98,7 @@ To access Django's admin site, you need to create an admin user first:
 uv run manage.py createsuperuser
 ```
 
-Then log in at using those credentials:
+Then log in using those credentials:
 
 ```
 http://localhost:8000/admin
