@@ -1,12 +1,12 @@
 # Contax - A Simple Contact Manager
 
-Contax is a simple contact management application built with Django that helps users to store, manage, and share their contacts. The application features a user-friendly interface, allowing users to create, update, delete, and search for contacts easily. 
+Contax is a simple contact management application built with Django that helps users to store and manage their contacts. The application features a user-friendly interface, allowing users to create, update, delete contacts easily. 
 
 ## Features
 
 - **Contact Management**: Create, read, update, and delete contacts.
 - **Search and Filter**: Easily search for contacts by name, email, or other fields, and filter favorites.
-- **Favorite Contacts**: Mark contacts as favorites for quick access.
+- **Favourite Contacts**: Mark contacts (by clicking the star icon) as favourites for quick visual access. (Filtering or sorting by favourites could be an additional feature).
 - **Responsive Design**: Accessible on mobile and desktop devices.
 
 ## Getting Started
@@ -88,7 +88,7 @@ You can interact with the rudimentary API via the browser:
 http://localhost:8000/api/contacts
 ```
 
-or use CLI tools like `curl` to access the same URL.
+or use CLI tools like `curl` to access the same URL and obtain `json` output for further processing.
 
 ### Access the admin application
 
@@ -106,39 +106,19 @@ http://localhost:8000/admin
 
 ## Deploying on Google Cloud Platform
 
-To deploy this Django application on Google Cloud Platform (GCP):
+To deploy this Django application on Google Cloud Platform (GCP), specifically Google App Engine:
 
-1. **Prerequisite Installations**: Ensure you have the Google Cloud SDK installed on your local machine.
+1. **Prerequisite Installations**: Ensure you have the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed on your local machine.
 
-2. **Create a Google Cloud Project**: If you do not have one, create a project in the GCP Console.
+2. **Create a Google Cloud Project**: If you do not have one, [create a project in the GCP Console](https://console.cloud.google.com/projectselector2/home/dashboard).
 
 3. **Google Cloud Storage Setup**: Set up Google Cloud Storage to host your media files. Ensure to configure permissions appropriately so that your Django app can access it.
 
-4. **App Engine Setup**: Use the Google Cloud Console to set up App Engine for your project.
+4. **App Engine Setup**: Use the Google Cloud Console to [set up App Engine](https://console.cloud.google.com/flows/enableapi?apiid=sqladmin.googleapis.com,secretmanager.googleapis.com,cloudbuild.googleapis.com) for your project, and [initialise it](https://cloud.google.com/sdk/docs/initializing).
 
-5. **Required Configuration**:
-   - Create a `app.yaml` file in the root directory of your project with necessary configurations:
-     ```yaml
-     runtime: python311
+5. **Ensure latest documentation on finalising the configuration is followed**: Follow steps in [Google App Engine for Django](https://cloud.google.com/python/django/appengine).
 
-     handlers:
-     - url: /
-       static_files: static/index.html
-       upload: static/index.html
-
-     - url: /(.+)
-       static_files: \1
-       upload: (.+)
-     ```
-
-6. **Deploy the Application**:
-   Execute the following command from your terminal to deploy your application:
-
-   ```bash
-   gcloud app deploy
-   ```
-
-7. **Access the Deployed Application**: Once the deployment is successful, you can access your application via the URL provided in the deployment output.
+6. **Access the Deployed Application**: Once the deployment is successful, you can access your application via the URL provided in the deployment output.
 
 ## License
 
