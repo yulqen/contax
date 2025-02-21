@@ -5,7 +5,6 @@ Contax is a simple contact management application built with Django that helps u
 ## Features
 
 - **Contact Management**: Create, read, update, and delete contacts.
-- **Search and Filter**: Easily search for contacts by name, email, or other fields, and filter favorites.
 - **Favourite Contacts**: Mark contacts (by clicking the star icon) as favourites for quick visual access. (Filtering or sorting by favourites could be an additional feature).
 - **Responsive Design**: Accessible on mobile and desktop devices.
 
